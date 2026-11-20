@@ -1,21 +1,22 @@
-# Apex Design System — Core Design Tokens
+# Apex Design System
 
-A foundational design system built with **React** and **Vite** that establishes a **single source of truth** for brand colors, typography, and spacing tokens. All design tokens are defined in `tokens.json`, mapped to global CSS custom properties in `src/styles/tokens.css`, and showcased through a clean, responsive Light/Dark mode demo page.
+A clean, modern Design System foundation built with **React**, **Vite**, **JSON design tokens**, and **global CSS variables**. It serves as a single source of truth for brand colors, typography, and spacing, accompanied by an interactive Light/Dark mode visual showcase.
 
-🔗 **Live Demo:** [https://jawadiftikhar-dev.github.io/design-system/](https://jawadiftikhar-dev.github.io/design-system/)
+🔗 **Live Demo:** [https://jawadiftikhar-dev.github.io/design-system/](https://jawadiftikhar-dev.github.io/design-system/)  
+📦 **Repository:** [https://github.com/jawadiftikhar-dev/design-system](https://github.com/jawadiftikhar-dev/design-system)
 
 ---
 
 ## ✨ Features
 
-- **Single Source of Truth (`tokens.json`):** Structured JSON definitions for brand/semantic/neutral colors, font families, modular type scale, font weights, and 4px-based spacing tokens.
-- **Global CSS Variables (`src/styles/tokens.css`):** Maps every token to `:root` custom properties along with `[data-theme="dark"]` overrides.
-- **Light & Dark Mode Toggle:** Defaults to a crisp **Light Mode** with instant, smooth switching to **Dark Mode**.
-- **Interactive Token Showcase:**
-  - **Colors:** Visual swatches grouped by Brand, Semantic, and Neutral palettes with hex values and CSS variable names.
-  - **Fonts & Typography:** Live specimens for `Plus Jakarta Sans` and `JetBrains Mono`, modular type scale (`xs` to `4xl`), and font weights (`400`–`700`).
-  - **Spacing:** Proportional visual bars rendered directly using CSS spacing variables (`--space-1` to `--space-16`).
-- **Click-to-Copy:** Click any color swatch or spacing card to copy its `var(--token)` reference to your clipboard.
+- **Single Source of Truth (`tokens.json`)** — Structured JSON definitions for colors, font families, type scale, font weights, and spacing tokens.
+- **Global CSS Custom Properties (`src/styles/tokens.css`)** — Every token mapped cleanly to CSS variables under `:root` and `[data-theme="dark"]`.
+- **Light & Dark Mode Toggle** — Defaults to Light Mode with smooth theme switching and semantic surface/text variables.
+- **Visual Token Showcase**:
+  - **Colors:** Brand, semantic, and neutral swatches rendered with live CSS variables.
+  - **Fonts & Typography:** Font family specimens (`Plus Jakarta Sans` & `JetBrains Mono`), modular type scale (`xs` to `4xl`), and font weights.
+  - **Spacing:** 4px-based spacing scale visualized proportionally with usage guidelines.
+- **Click-to-Copy** — Click any color swatch or spacing card to copy its `var(--token-name)` directly to your clipboard.
 
 ---
 
@@ -23,62 +24,74 @@ A foundational design system built with **React** and **Vite** that establishes 
 
 ```text
 design-system/
-├── index.html               # Loads Google Fonts & sets default light theme
-├── package.json             # Project scripts including GitHub Pages deployment
-├── tokens.json              # Single source of truth for colors, fonts, and spacing
-├── vite.config.js           # Vite configuration with GitHub Pages base path
-└── src/
-    ├── styles/
-    │   └── tokens.css       # Global CSS variables (:root & [data-theme="dark"])
-    ├── App.css              # Responsive showcase styles using CSS variables
-    ├── App.jsx              # Visual token grid & Light/Dark mode toggle
-    ├── index.css            # Base reset & global stylesheet import
-    └── main.jsx             # React entry point
+├── public/
+├── src/
+│   ├── styles/
+│   │   └── tokens.css      # Global CSS variables (Light & Dark themes)
+│   ├── App.css             # Showcase layout & component styles
+│   ├── App.jsx             # Interactive Design System demo page
+│   ├── index.css           # Base resets & global stylesheet import
+│   └── main.jsx            # React entry point
+├── tokens.json             # Single source of truth for design tokens
+├── index.html              # HTML entry + Google Fonts
+├── package.json            # Dependencies & GitHub Pages deploy scripts
+└── vite.config.js          # Vite config with GitHub Pages base path
+```
 
-🚀 Getting Started
+---
 
-Prerequisites
+## 🛠️ Tech Stack
 
-  - Node.js (v18 or higher recommended)
-  - npm (comes with Node.js)
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- CSS Custom Properties (CSS Variables)
+- [gh-pages](https://www.npmjs.com/package/gh-pages) for deployment
 
-Local Development
+---
 
-1.  Clone the repository:
+## 🚀 Getting Started
 
-    git clone https://github.com/jawadiftikhar-dev/design-system.git
-    cd design-system
+### 1. Clone the Repository
 
-2.  Install dependencies:
+```bash
+git clone https://github.com/jawadiftikhar-dev/design-system.git
+cd design-system
+```
 
-    npm install
+### 2. Install Dependencies
 
-3.  Start the development server:
+```bash
+npm install
+```
 
-    npm run dev
+### 3. Run Development Server
 
-4.  Open the local URL shown in your terminal (typically
-    http://localhost:5173/design-system/).
+```bash
+npm run dev
+```
 
-🎨 Token Overview
+Open `http://localhost:5173/design-system/` in your browser.
 
-1. JSON Tokens (tokens.json)
+### 4. Build for Production
 
-All core values live in tokens.json under three main sections:
+```bash
+npm run build
+```
 
-  - colors (brand, semantic, neutral)
-  - fonts (families, sizes, weights)
-  - spacing (1 through 16)
+---
 
-2. CSS Variables (src/styles/tokens.css)
+## 🎨 Using the Design Tokens
 
-Use the tokens anywhere in your CSS:
+### In CSS
 
+All tokens are available globally via `src/styles/tokens.css`:
+
+```css
 .card {
   background-color: var(--bg-surface);
   color: var(--text-primary);
-  border: 1px solid var(--border-subtle);
   padding: var(--space-6);
+  border: 1px solid var(--border-subtle);
   font-family: var(--font-sans);
   font-size: var(--text-base);
 }
@@ -86,28 +99,46 @@ Use the tokens anywhere in your CSS:
 .button-primary {
   background-color: var(--color-brand-primary);
   color: var(--color-neutral-white);
+  padding: var(--space-3) var(--space-5);
 }
+```
 
-📦 Build & Deploy to GitHub Pages
+### In JavaScript / React
 
-To create a production build and deploy to the gh-pages branch:
+Import `tokens.json` directly when you need programmatic access to raw values:
 
-npm run build
+```jsx
+import tokens from '../tokens.json'
+
+console.log(tokens.colors.brand.primary.value) // "#4F46E5"
+console.log(tokens.spacing['4'].px)            // "16px"
+```
+
+---
+
+## 🌐 Deployment (GitHub Pages)
+
+This repository is configured to deploy automatically to the `gh-pages` branch using `gh-pages`:
+
+```bash
 npm run deploy
+```
 
-npm run deploy automatically runs npm run build via predeploy and publishes the
-dist/ directory to GitHub Pages.
+Ensure **Settings → Pages** in your GitHub repository is set to deploy from the `gh-pages` branch (`/ (root)`).
 
-✅ Checklist
+---
 
-- [x] Repository includes tokens.json with colors, fonts, and spacing
-- [x] Global CSS variables defined in src/styles/tokens.css
-- [x] Demo page visually displays all token values in clean responsive grids
-- [x] Light/Dark mode toggle (Light mode by default)
+## ✅ Checklist
+
+- [x] `tokens.json` file with colors, fonts, and spacing
+- [x] Demo page displaying token values visually in responsive grids
+- [x] CSS variables defined in a global stylesheet (`src/styles/tokens.css`)
+- [x] Light/Dark theme toggle (Light Mode by default)
 - [x] Deployed to GitHub Pages
 
-👤 Author
+---
 
-Jawad Iftikhar
-GitHub: @jawadiftikhar-dev
+## 👤 Author
 
+**Jawad Iftikhar**  
+GitHub: [@jawadiftikhar-dev](https://github.com/jawadiftikhar-dev)
