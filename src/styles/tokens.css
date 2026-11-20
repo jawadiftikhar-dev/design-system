@@ -1,0 +1,96 @@
+/* ==========================================================================
+   Design System Global CSS Variables
+   Single Source of Truth mapped from tokens.json
+   ========================================================================== */
+
+:root {
+  /* Brand Colors */
+  --color-brand-primary: #4f46e5;
+  --color-brand-primary-hover: #4338ca;
+  --color-brand-primary-soft: #eef2ff;
+  --color-brand-secondary: #0ea5e9;
+
+  /* Semantic Colors */
+  --color-semantic-success: #10b981;
+  --color-semantic-warning: #f59e0b;
+  --color-semantic-danger: #ef4444;
+  --color-semantic-info: #3b82f6;
+
+  /* Neutral Palette */
+  --color-neutral-white: #ffffff;
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-600: #475569;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+
+  /* Font Families */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Font Sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.75rem;
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing Scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Radii & Shadows */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+
+  /* Theme Semantic Surfaces — Default Light Mode */
+  --bg-canvas: var(--color-neutral-50);
+  --bg-surface: var(--color-neutral-white);
+  --bg-surface-subtle: var(--color-neutral-100);
+  --bg-nav: rgba(248, 250, 252, 0.82);
+  --text-primary: var(--color-neutral-900);
+  --text-secondary: var(--color-neutral-600);
+  --text-muted: var(--color-neutral-400);
+  --border-subtle: var(--color-neutral-200);
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  --accent-soft-bg: var(--color-brand-primary-soft);
+  --accent-soft-text: var(--color-brand-primary);
+}
+
+/* Dark Mode Token Overrides */
+[data-theme='dark'] {
+  --bg-canvas: #090d16;
+  --bg-surface: #111827;
+  --bg-surface-subtle: #1e293b;
+  --bg-nav: rgba(9, 13, 22, 0.82);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border-subtle: #1e293b;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 12px 32px -8px rgba(0, 0, 0, 0.5);
+  --accent-soft-bg: rgba(79, 70, 229, 0.16);
+  --accent-soft-text: #a5b4fc;
+}
