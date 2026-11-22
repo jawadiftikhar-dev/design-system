@@ -1,4 +1,4 @@
-import './Button.css'
+import styles from './Button.module.css'
 
 export default function Button({
   children,
@@ -11,10 +11,10 @@ export default function Button({
   ...rest
 }) {
   const classes = [
-    'ds-btn',
-    `ds-btn--${variant}`,
-    `ds-btn--${size}`,
-    error ? 'ds-btn--error' : '',
+    styles.button,
+    styles[variant],
+    styles[size],
+    error ? styles.error : '',
     className,
   ]
     .filter(Boolean)
