@@ -77,6 +77,15 @@
   --shadow-md: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
   --accent-soft-bg: var(--color-brand-primary-soft);
   --accent-soft-text: var(--color-brand-primary);
+
+  /* Component & Form State Tokens (Light Mode) */
+  --color-semantic-danger-soft: rgba(239, 68, 68, 0.1);
+  --bg-input: var(--color-neutral-white);
+  --bg-input-filled: var(--color-neutral-100);
+  --border-input: #cbd5e1;
+  --border-input-hover: var(--color-neutral-400);
+  --focus-ring-primary: 0 0 0 3px rgba(79, 70, 229, 0.22);
+  --focus-ring-danger: 0 0 0 3px rgba(239, 68, 68, 0.2);
 }
 
 /* Dark Mode Token Overrides */
@@ -93,4 +102,13 @@
   --shadow-md: 0 12px 32px -8px rgba(0, 0, 0, 0.5);
   --accent-soft-bg: rgba(79, 70, 229, 0.16);
   --accent-soft-text: #a5b4fc;
+
+  /* Component & Form State Tokens (Dark Mode) */
+  --color-semantic-danger-soft: rgba(239, 68, 68, 0.18);
+  --bg-input: #0f172a;
+  --bg-input-filled: #1e293b;
+  --border-input: #334155;
+  --border-input-hover: #475569;
+  --focus-ring-primary: 0 0 0 3px rgba(99, 102, 241, 0.32);
+  --focus-ring-danger: 0 0 0 3px rgba(239, 68, 68, 0.28);
 }
