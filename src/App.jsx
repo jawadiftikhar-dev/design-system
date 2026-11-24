@@ -1,11 +1,50 @@
 import { useEffect, useState } from 'react'
 import tokens from '../tokens.json'
 import './App.css'
+import { Button, Input, Select } from './components'
 
 export default function App() {
   // Light mode by default
   const [theme, setTheme] = useState('light')
   const [copiedMsg, setCopiedMsg] = useState('')
+
+  const [formValues, setFormValues] = useState({
+  fullName: '',
+  email: '',
+  role: '',
+})
+const [formErrors, setFormErrors] = useState({})
+const [submitted, setSubmitted] = useState(false)
+
+const roleOptions = [
+  { value: 'designer', label: 'Product Designer' },
+  { value: 'frontend', label: 'Frontend Engineer' },
+  { value: 'pm', label: 'Product Manager' },
+]
+
+const handleFormSubmit = (e) => {
+  e.preventDefault()
+  const nextErrors = {}
+
+  if (!formValues.fullName.trim()) {
+    nextErrors.fullName = 'Full name is required.'
+  }
+  if (!formValues.email.includes('@')) {
+    nextErrors.email = 'Enter a valid email address.'
+  }
+  if (!formValues.role) {
+    nextErrors.role = 'Please select a team role.'
+  }
+
+  setFormErrors(nextErrors)
+  setSubmitted(Object.keys(nextErrors).length === 0)
+}
+
+const handleFormReset = () => {
+  setFormValues({ fullName: '', email: '', role: '' })
+  setFormErrors({})
+  setSubmitted(false)
+}
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
@@ -44,11 +83,14 @@ export default function App() {
             <span className="ds-brand-badge">v{tokens.meta.version}</span>
           </a>
 
-          <nav className="ds-nav-links" aria-label="Token sections">
-            <a href="#colors">Colors</a>
-            <a href="#fonts">Fonts</a>
-            <a href="#spacing">Spacing</a>
-          </nav>
+<nav className="ds-nav-links" aria-label="Token and component sections">
+  <a href="#colors">Colors</a>
+  <a href="#fonts">Fonts</a>
+  <a href="#spacing">Spacing</a>
+  <a href="#buttons">Buttons</a>
+  <a href="#inputs">Inputs</a>
+  <a href="#selects">Selects</a>
+</nav>
 
           <button
             type="button"
@@ -263,6 +305,262 @@ export default function App() {
             </div>
           </div>
         </section>
+
+        {/* Buttons Section */}
+<section id="buttons" className="ds-section">
+  <div className="ds-container">
+    <div className="ds-section-header">
+      <div>
+        <h2 className="ds-section-title">Buttons</h2>
+        <p className="ds-section-desc">
+          Primary, secondary, and ghost button variants across sizes and interactive states.
+        </p>
+      </div>
+    </div>
+
+    <div className="ds-showcase-grid">
+      <div className="ds-showcase-card">
+        <div>
+          <h3 className="ds-showcase-card-title">Variants</h3>
+          <p className="ds-showcase-card-sub">
+            Hover or Tab onto buttons to inspect focus rings.
+          </p>
+        </div>
+        <div className="ds-btn-row">
+          <Button variant="primary">Primary</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="ghost">Ghost</Button>
+        </div>
+      </div>
+
+      <div className="ds-showcase-card">
+        <div>
+          <h3 className="ds-showcase-card-title">Sizes</h3>
+          <p className="ds-showcase-card-sub">Small, Medium, and Large scale steps.</p>
+        </div>
+        <div className="ds-btn-row">
+          <Button size="sm">Small</Button>
+          <Button size="md">Medium</Button>
+          <Button size="lg">Large</Button>
+        </div>
+      </div>
+
+      <div className="ds-showcase-card">
+        <div>
+          <h3 className="ds-showcase-card-title">States</h3>
+          <p className="ds-showcase-card-sub">Disabled and Error states.</p>
+        </div>
+        <div className="ds-btn-row">
+          <Button variant="primary" disabled>
+            Disabled
+          </Button>
+          <Button variant="primary" error>
+            Error Primary
+          </Button>
+          <Button variant="secondary" error>
+            Error Secondary
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Inputs Section */}
+<section id="inputs" className="ds-section">
+  <div className="ds-container">
+    <div className="ds-section-header">
+      <div>
+        <h2 className="ds-section-title">Inputs</h2>
+        <p className="ds-section-desc">
+          Text inputs supporting labels, outline/filled variants, sizes, and error messages.
+        </p>
+      </div>
+    </div>
+
+    <div className="ds-showcase-grid">
+      <div className="ds-showcase-card">
+        <div>
+          <h3 className="ds-showcase-card-title">Variants</h3>
+          <p className="ds-showcase-card-sub">Outline and Filled surface styles.</p>
+        </div>
+        <div className="ds-form-stack">
+          <Input
+            label="Project Name (Outline)"
+            variant="outline"
+            placeholder="Mehfil Web App"
+            helperText="Default outline input style"
+          />
+          <Input
+            label="Workspace Slug (Filled)"
+            variant="filled"
+            placeholder="mehfil-design"
+          />
+        </div>
+      </div>
+
+      <div className="ds-showcase-card">
+        <div>
+          <h3 className="ds-showcase-card-title">Sizes</h3>
+          <p className="ds-showcase-card-sub">Consistent heights matching Button tokens.</p>
+        </div>
+        <div className="ds-form-stack">
+          <Input label="Small" size="sm" placeholder="Small input (34px)" />
+          <Input label="Medium" size="md" placeholder="Medium input (42px)" />
+          <Input label="Large" size="lg" placeholder="Large input (50px)" />
+        </div>
+      </div>
+
+      <div className="ds-showcase-card">
+        <div>
+          <h3 className="ds-showcase-card-title">States</h3>
+          <p className="ds-showcase-card-sub">Validation error message and disabled state.</p>
+        </div>
+        <div className="ds-form-stack">
+          <Input
+            label="Email Address"
+            type="email"
+            defaultValue="invalid-email"
+            error="Please enter a valid email address."
+          />
+          <Input
+            label="Read-only Token"
+            defaultValue="mehfil-prod-key"
+            disabled
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Selects Section */}
+<section id="selects" className="ds-section">
+  <div className="ds-container">
+    <div className="ds-section-header">
+      <div>
+        <h2 className="ds-section-title">Selects</h2>
+        <p className="ds-section-desc">
+          Accessible dropdown controls sharing size, variant, and error states.
+        </p>
+      </div>
+    </div>
+
+    <div className="ds-showcase-grid">
+      <div className="ds-showcase-card">
+        <div>
+          <h3 className="ds-showcase-card-title">Variants</h3>
+          <p className="ds-showcase-card-sub">Outline and Filled dropdowns.</p>
+        </div>
+        <div className="ds-form-stack">
+          <Select
+            label="Department (Outline)"
+            variant="outline"
+            defaultValue=""
+            options={roleOptions}
+          />
+          <Select
+            label="Environment (Filled)"
+            variant="filled"
+            defaultValue="Production"
+            options={['Development', 'Staging', 'Production']}
+          />
+        </div>
+      </div>
+
+      <div className="ds-showcase-card">
+        <div>
+          <h3 className="ds-showcase-card-title">Sizes</h3>
+          <p className="ds-showcase-card-sub">Small, Medium, and Large dropdown heights.</p>
+        </div>
+        <div className="ds-form-stack">
+          <Select label="Small" size="sm" defaultValue="" options={roleOptions} />
+          <Select label="Medium" size="md" defaultValue="" options={roleOptions} />
+          <Select label="Large" size="lg" defaultValue="" options={roleOptions} />
+        </div>
+      </div>
+
+      <div className="ds-showcase-card">
+        <div>
+          <h3 className="ds-showcase-card-title">States</h3>
+          <p className="ds-showcase-card-sub">Error feedback and disabled select.</p>
+        </div>
+        <div className="ds-form-stack">
+          <Select
+            label="Team Role"
+            defaultValue=""
+            options={roleOptions}
+            error="Role selection is required before continuing."
+          />
+          <Select
+            label="Region (Locked)"
+            defaultValue="Pakistan (PK)"
+            options={['Pakistan (PK)']}
+            disabled
+          />
+        </div>
+      </div>
+    </div>
+
+    {/* Live Interactive Mehfil Form Demo */}
+    <form className="ds-playground-card" onSubmit={handleFormSubmit} noValidate>
+      <h3 className="ds-showcase-card-title">Interactive Form Playground</h3>
+      <p className="ds-showcase-card-sub">
+        Submit empty or invalid values to test live error states across Mehfil form components.
+      </p>
+
+      <div className="ds-playground-grid">
+        <Input
+          label="Full Name"
+          placeholder="Jawad Iftikhar"
+          value={formValues.fullName}
+          onChange={(e) =>
+            setFormValues((prev) => ({ ...prev, fullName: e.target.value }))
+          }
+          error={formErrors.fullName}
+        />
+        <Input
+          label="Work Email"
+          type="email"
+          placeholder="name@mehfil.dev"
+          value={formValues.email}
+          onChange={(e) =>
+            setFormValues((prev) => ({ ...prev, email: e.target.value }))
+          }
+          error={formErrors.email}
+        />
+        <Select
+          label="Role"
+          options={roleOptions}
+          value={formValues.role}
+          onChange={(e) =>
+            setFormValues((prev) => ({ ...prev, role: e.target.value }))
+          }
+          error={formErrors.role}
+        />
+      </div>
+
+      <div className="ds-playground-actions">
+        <Button type="submit" variant="primary">
+          Validate &amp; Submit
+        </Button>
+        <Button type="button" variant="secondary" onClick={handleFormReset}>
+          Reset Form
+        </Button>
+        <Button type="button" variant="ghost" onClick={handleFormReset}>
+          Cancel
+        </Button>
+      </div>
+
+      {submitted && (
+        <div className="ds-success-banner">
+          All fields validated cleanly! Ready for Mehfil production forms.
+        </div>
+      )}
+    </form>
+  </div>
+</section>
+
       </main>
 
       <footer className="ds-footer">
