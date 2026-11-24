@@ -128,6 +128,13 @@ Ensure **Settings → Pages** in your GitHub repository is set to deploy from th
 
 ---
 
+## 🧩 Core Components
+
+All form building blocks are exported from `src/components/index.js`:
+
+```jsx
+import { Button, Input, Select } from './components'
+
 ## ✅ Checklist
 
 - [x] `tokens.json` file with colors, fonts, and spacing
