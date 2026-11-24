@@ -86,6 +86,12 @@
   --border-input-hover: var(--color-neutral-400);
   --focus-ring-primary: 0 0 0 3px rgba(79, 70, 229, 0.22);
   --focus-ring-danger: 0 0 0 3px rgba(239, 68, 68, 0.2);
+
+  /* Layout & Feedback Tokens (Light Mode) */
+  --bg-backdrop: rgba(15, 23, 42, 0.52);
+  --shadow-lg: 0 22px 48px -12px rgba(15, 23, 42, 0.24);
+  --z-modal: 200;
+  --z-toast: 300;
 }
 
 /* Dark Mode Token Overrides */
@@ -111,4 +117,8 @@
   --border-input-hover: #475569;
   --focus-ring-primary: 0 0 0 3px rgba(99, 102, 241, 0.32);
   --focus-ring-danger: 0 0 0 3px rgba(239, 68, 68, 0.28);
+
+  /* Layout & Feedback Tokens (Dark Mode) */
+  --bg-backdrop: rgba(2, 6, 23, 0.72);
+  --shadow-lg: 0 24px 56px -12px rgba(0, 0, 0, 0.65);
 }
