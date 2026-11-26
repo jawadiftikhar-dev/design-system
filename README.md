@@ -130,10 +130,18 @@ Ensure **Settings → Pages** in your GitHub repository is set to deploy from th
 
 ## 🧩 Core Components
 
-All form building blocks are exported from `src/components/index.js`:
+All design system components are exported from `src/components/index.js`:
 
 ```jsx
-import { Button, Input, Select } from './components'
+import {
+  Button,
+  Input,
+  Select,
+  Card,
+  Modal,
+  Toast,
+  useToast,
+} from './components'
 
 ## ✅ Checklist
 
