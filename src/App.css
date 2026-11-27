@@ -49,7 +49,7 @@
   color: var(--color-neutral-white);
   font-weight: var(--font-weight-bold);
   font-size: var(--text-base);
-  box-shadow: 0 6px 16px -4px rgba(79, 70, 229, 0.45);
+  box-shadow: var(--shadow-brand);
 }
 
 .ds-brand-title {
@@ -111,11 +111,9 @@
 .ds-hero {
   padding: var(--space-16) 0 var(--space-12);
   border-bottom: 1px solid var(--border-subtle);
-  background: radial-gradient(
-    ellipse 80% 50% at 50% -10%,
-    rgba(79, 70, 229, 0.12),
-    transparent
-  );
+  background: radial-gradient(ellipse 80% 50% at 50% -10%,
+      var(--bg-hero-glow),
+      transparent);
 }
 
 .ds-hero-eyebrow {
@@ -256,8 +254,8 @@
   position: absolute;
   bottom: var(--space-2);
   right: var(--space-2);
-  background: rgba(15, 23, 42, 0.72);
-  color: #ffffff;
+  background: var(--bg-pill);
+  color: var(--color-neutral-white);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   padding: 3px var(--space-2);
@@ -467,6 +465,7 @@
     opacity: 0;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -545,7 +544,7 @@
   margin-top: var(--space-4);
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-sm);
-  background: rgba(16, 185, 129, 0.12);
+  background: var(--color-semantic-success-soft);
   border: 1px solid var(--color-semantic-success);
   color: var(--color-semantic-success);
   font-size: var(--text-sm);
